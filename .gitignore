@@ -2,7 +2,7 @@ venv/
 .asad.txt
 # Created by https://www.gitignore.io
 
-### OSX ###
+### OSX ##
 .DS_Store
 .AppleDouble
 .LSOverride
