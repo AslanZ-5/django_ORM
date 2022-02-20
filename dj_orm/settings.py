@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'multi_table_inheritance',
+    'tables',
     'debug_toolbar',
 ]
 
@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'multi_table_inheritance/templates/multi_table_inheritance/',
+            BASE_DIR / 'tebles/templates/tebles/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

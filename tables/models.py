@@ -1,6 +1,6 @@
 from django.db import models
 
-class Product(models.Model):
+class Base(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/', default='images/default.jpg')
@@ -12,12 +12,13 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
+        abstract = True
         ordering = ('-created',)
 
-class Book(Product):
+class Book(Base):
     publisher = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
 
-class Cupboard(Product):
+class Cupboard(Base):
     shelves = models.IntegerField()
     author = models.CharField(max_length=255)
