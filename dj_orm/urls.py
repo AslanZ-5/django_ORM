@@ -20,5 +20,5 @@ import debug_toolbar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('multi_table_inheritance.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
