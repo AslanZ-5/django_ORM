@@ -3,7 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
 class Product(models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to={'model_in':('book','cupboard',)})
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to={'model__in':('book','cupboard',)})
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type','object_id')
 
@@ -28,7 +28,9 @@ class Base(models.Model):
 class Book(Base):
     publisher = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
+    m2m = models.ManyToManyField(Product, related_name='book_related', related_query_name='book')
 
 class Cupboard(Base):
     shelves = models.IntegerField()
     author = models.CharField(max_length=255)
+    m2m = models.ManyToManyField(Product, related_name='cupboard_related', related_query_name='cupboard')
