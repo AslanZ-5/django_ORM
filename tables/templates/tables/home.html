@@ -8,12 +8,14 @@
 </head>
 <body>
     <h1>Abstract Table</h1>
-    {% for pr in products %}
+
+
+{% for pr in products %}
 <h3>
-    {{ pr.item.title }}
-    {{ pr.item.price }}
-   <h5> {{ pr.item.author }}</h5>
-    {{ pr.item.shelves}}
+    {{ pr.title }}
+    {{ pr.price }}
+   <h5> {{ pr.author }}</h5>
+    {{ pr.shelves}}
 
 </h3>
 

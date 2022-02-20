@@ -23,7 +23,7 @@ class Base(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('-created',)
+        # ordering = ('-created',)
 
 class Book(Base):
     publisher = models.CharField(max_length=255)
