@@ -60,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'tebles/templates/tebles/',
+            BASE_DIR / 'tables/templates/tables/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
