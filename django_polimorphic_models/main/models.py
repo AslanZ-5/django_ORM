@@ -1,16 +1,9 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from polymorphic.models import PolymorphicModel
 
-class Product(models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to={'model__in':('book','cupboard',)})
-    object_id = models.PositiveIntegerField()
-    item = GenericForeignKey('content_type','object_id')
-
-    class Meta:
-        ordering = ['object_id']
-
-class Base(models.Model):
+class Product(PolymorphicModel):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/', default='images/default.jpg')
@@ -21,16 +14,12 @@ class Base(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
-        abstract = True
-        # ordering = ('-created',)
 
-class Book(Base):
+
+class Book(Product):
     publisher = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
-    m2m = models.ManyToManyField(Product, related_name='book_related', related_query_name='book')
 
-class Cupboard(Base):
+class Cupboard(Product):
     shelves = models.IntegerField()
     author = models.CharField(max_length=255)
-    m2m = models.ManyToManyField(Product, related_name='cupboard_related', related_query_name='cupboard')
